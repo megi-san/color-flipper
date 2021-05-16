@@ -50,6 +50,72 @@ function rgb() {
     hexBtn.addEventListener("click", hex);
     rgbBtn.removeEventListener("click", rgb);
   }
+
   return res;
 }
 hex();
+
+const searchBtn = document.querySelector(".coder"),
+  nav = document.querySelector("nav"),
+  hexSearchBtn = document.querySelector(".hexsearch"),
+  rgbSearchBtn = document.querySelector(".rgbsearch"),
+  cont = document.querySelector(".container"),
+  contrgb = document.querySelector(".container6"),
+  conthex = document.querySelector(".container4"),
+  cancelBtn = document.querySelectorAll(".cbtn");
+
+searchBtn.addEventListener("click", function () {
+  nav.classList.toggle("height");
+});
+hexSearchBtn.addEventListener("click", function () {
+  nav.classList.remove("height");
+  cont.style.display = "none";
+  conthex.style.display = "block";
+  contrgb.style.display = "none";
+});
+rgbSearchBtn.addEventListener("click", function () {
+  nav.classList.remove("height");
+  cont.style.display = "none";
+  contrgb.style.display = "block";
+  conthex.style.display = "none";
+});
+for (let i = 0; i < cancelBtn.length; i++) {
+  cancelBtn[i].addEventListener("click", function () {
+    cont.style.display = "block";
+    contrgb.style.display = "none";
+    conthex.style.display = "none";
+  });
+}
+const hexboot = document.querySelector(".hexbtn"),
+  rgbboot = document.querySelector(".rgbbtn"),
+  spann = document.querySelector("span").textContent;
+
+hexboot.addEventListener("click", function () {
+  if (
+    /#([1-9a-fA-F]{3}|[1-9a-fA-F]{6})/.test(
+      document.querySelector(".four").value
+    )
+  ) {
+    cont.style.display = "block";
+    conthex.style.display = "none";
+    document.querySelector("span").textContent =
+      document.querySelector(".four").value;
+    document.body.style.backgroundColor = document.querySelector(".four").value;
+  }
+});
+rgbboot.addEventListener("click", function () {
+  if (
+    document.querySelector(".one").value <= 255 &&
+    document.querySelector(".two").value <= 255 &&
+    document.querySelector(".three").value <= 255
+  ) {
+    const one = parseInt(document.querySelector(".one").value),
+      two = parseInt(document.querySelector(".two").value),
+      three = parseInt(document.querySelector(".three").value),
+      cl = `rgb(${one},${two},${three})`;
+    cont.style.display = "block";
+    contrgb.style.display = "none";
+    document.querySelector("span").textContent = cl;
+    document.body.style.backgroundColor = cl;
+  }
+});
