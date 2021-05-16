@@ -65,7 +65,7 @@ h4 {
   letter-spacing: var(--spacing);
   text-transform: capitalize;
   line-height: 1.25;
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.5rem;
   font-family: var(--ff-primary);
 }
 h1 {
@@ -132,6 +132,7 @@ nav {
   display: grid;
   align-items: center;
   box-shadow: var(--dark-shadow);
+  overflow: hidden;
 }
 .nav-center {
   width: 90vw;
@@ -159,10 +160,12 @@ nav a {
 nav a:hover {
   color: var(--clr-primary-5);
 }
-.container {
+.container,
+.container2 {
   text-align: center;
 }
-.container h2 {
+.container h2,
+.container2 h2 {
   background: var(--clr-black);
   color: var(--clr-white);
   padding: 1rem;
@@ -192,7 +195,8 @@ nav a:hover {
   color: var(--clr-white);
   background: var(--clr-black);
 }
-.container {
+.container,
+.container2 {
   text-align: center;
 }
 .btn {
@@ -215,7 +219,8 @@ nav a:hover {
   background: var(--clr-black);
 }
 
-.container {
+.container,
+.container2 {
   width: 80vw;
   max-width: var(--fixed-width);
 }
@@ -242,4 +247,68 @@ nav {
   button {
     background: var(--clr-primary-10);
   }
+}
+input {
+  width: 50vh;
+  margin-right: auto;
+  font-size: 0.8em;
+}
+.container3 {
+  display: grid;
+  grid-template-areas:
+    "redd input1"
+    "greenn input2"
+    "bluee input3";
+  grid-gap: 2vh;
+}
+.one {
+  grid-area: input1;
+}
+.two {
+  grid-area: input2;
+}
+.three {
+  grid-area: input3;
+}
+.r {
+  grid-area: redd;
+}
+.g {
+  grid-area: greenn;
+}
+.b {
+  grid-area: bluee;
+}
+li {
+  cursor: pointer;
+}
+.cbtn {
+  border-color: var(--clr-red-dark);
+  color: var(--clr-red-dark);
+}
+.cbtn:hover {
+  background-color: red;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+.container4 {
+  display: none;
+}
+.container6 {
+  display: none;
+}
+.searchnav {
+  margin: 10px 0px 5px 0px;
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+}
+.height {
+  height: 17vh;
+}
+.hexsearch,
+.rgbsearch {
+  cursor: pointer;
 }
