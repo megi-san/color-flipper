@@ -21,8 +21,18 @@ function randomRgb() {
 function randomHex() {
   let r = Math.floor(Math.random() * 256).toString(16),
     g = Math.floor(Math.random() * 256).toString(16),
-    b = Math.floor(Math.random() * 256).toString(16),
-    color = `#${r}${g}${b}`;
+    b = Math.floor(Math.random() * 256).toString(16);
+  if (r.length == 1) {
+    r += "0";
+  }
+  if (g.length == 1) {
+    g += "0";
+  }
+  if (b.length == 1) {
+    b += "0";
+  }
+
+  let color = `#${r}${g}${b}`;
   document.querySelector("span").textContent = `${color}`;
   let bgColor = document.querySelector("span").textContent;
   document.body.style.backgroundColor = bgColor;
@@ -141,4 +151,12 @@ rgbboot.addEventListener("click", function () {
     hexBtn.addEventListener("click", hex);
     rgbBtn.removeEventListener("click", rgb);
   }
+});
+let reset = document.querySelector(".reset");
+reset.addEventListener("click", function () {
+  cont.style.display = "block";
+  contrgb.style.display = "none";
+  conthex.style.display = "none";
+  document.querySelector("span").textContent = "#F1f5f8";
+  document.body.style.backgroundColor = "#F1f5f8";
 });
