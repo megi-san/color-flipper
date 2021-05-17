@@ -120,6 +120,8 @@ hexboot.addEventListener("click", function () {
     document.querySelector("span").textContent =
       document.querySelector(".four").value;
     document.body.style.backgroundColor = document.querySelector(".four").value;
+    hexBtn.removeEventListener("click", hex);
+    rgbBtn.addEventListener("click", rgb);
   }
 });
 rgbboot.addEventListener("click", function () {
@@ -136,5 +138,7 @@ rgbboot.addEventListener("click", function () {
     contrgb.style.display = "none";
     document.querySelector("span").textContent = cl;
     document.body.style.backgroundColor = cl;
+    hexBtn.addEventListener("click", hex);
+    rgbBtn.removeEventListener("click", rgb);
   }
 });
