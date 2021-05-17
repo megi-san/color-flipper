@@ -4,7 +4,8 @@ const hexBtn = document.querySelector(".hex"),
   rgbBtn = document.querySelector(".rgb");
 btn = document.querySelector(".btn");
 
-btn.addEventListener("click", function () {
+btn.addEventListener("click", randomRgb);
+function randomRgb() {
   let r = Math.floor(Math.random() * 256),
     g = Math.floor(Math.random() * 256),
     b = Math.floor(Math.random() * 256),
@@ -15,11 +16,25 @@ btn.addEventListener("click", function () {
   hexBtn.addEventListener("click", hex);
   rgbBtn.removeEventListener("click", rgb);
   return color;
-});
+}
+
+function randomHex() {
+  let r = Math.floor(Math.random() * 256).toString(16),
+    g = Math.floor(Math.random() * 256).toString(16),
+    b = Math.floor(Math.random() * 256).toString(16),
+    color = `#${r}${g}${b}`;
+  document.querySelector("span").textContent = `${color}`;
+  let bgColor = document.querySelector("span").textContent;
+  document.body.style.backgroundColor = bgColor;
+  hexBtn.removeEventListener("click", hex);
+  rgbBtn.addEventListener("click", rgb);
+  return color;
+}
 
 function hex() {
   let color = document.querySelector("span").textContent;
   let slis = color.slice(4, color.length - 1),
+    btn = document.querySelector(".btn"),
     arrx = slis.split(",");
   function rgbToHex(r, g, b) {
     return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
@@ -34,6 +49,8 @@ function hex() {
     hexBtn.removeEventListener("click", hex);
     rgbBtn.addEventListener("click", rgb);
   }
+  btn.removeEventListener("click", randomRgb);
+  btn.addEventListener("click", randomHex);
   return res;
 }
 rgb();
@@ -41,6 +58,7 @@ function rgb() {
   let color = document.querySelector("span").textContent,
     r3 = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i,
     arr = r3.exec(color),
+    btn = document.querySelector(".btn"),
     r = parseInt(arr[1], 16),
     g = parseInt(arr[2], 16),
     b = parseInt(arr[3], 16),
@@ -50,7 +68,8 @@ function rgb() {
     hexBtn.addEventListener("click", hex);
     rgbBtn.removeEventListener("click", rgb);
   }
-
+  btn.addEventListener("click", randomRgb);
+  btn.removeEventListener("click", randomHex);
   return res;
 }
 hex();
