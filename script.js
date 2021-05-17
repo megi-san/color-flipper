@@ -22,17 +22,15 @@ function randomHex() {
   let r = Math.floor(Math.random() * 256).toString(16),
     g = Math.floor(Math.random() * 256).toString(16),
     b = Math.floor(Math.random() * 256).toString(16);
-  if (r.length == 1) {
-    r += "0";
+if (r.length == 1) {
+    r = "0" + r;
   }
   if (g.length == 1) {
-    g += "0";
+    g = "0" + g;
   }
   if (b.length == 1) {
-    b += "0";
-  }
-
-  let color = `#${r}${g}${b}`;
+    b = "0" + b;
+  }  let color = `#${r}${g}${b}`;
   document.querySelector("span").textContent = `${color}`;
   let bgColor = document.querySelector("span").textContent;
   document.body.style.backgroundColor = bgColor;
